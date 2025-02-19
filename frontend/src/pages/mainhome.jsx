@@ -1,47 +1,49 @@
+import React from "react";
+
 const ProcessHome = () => {
-    return (
-      <div className="">
-        <h2 className="text-4xl font-medium text-white mb-10 text-center">
-          Create And Sell{" "}
-          <span className="text-color-primary">Your Products</span>
-        </h2>
-        <div className="grid grid-cols-1 m-auto gap-5   w-full  md:grid-cols-2 lg:grid-cols-4">
-          <div className="flex flex-col text-white gap-4 justify-start p-8 rounded-2xl bg-theme-bg ">
-            <h2 className="text-5xl font-bold text-stroke">01</h2>
-            <h3 className="text-2xl font-bold">Setup your Account</h3>
-            <p className="text-body-text-color">
-              Register for a free account and unlock the power to sell anything,
-              anytime.
-            </p>
+  return (
+    <div className="container my-5">
+      <h2 className="text-center text-light fw-medium mb-4">
+        Create And Sell <span className="text-primary">Your Products</span>
+      </h2>
+      <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+        {[
+          {
+            number: "01",
+            title: "Setup your Account",
+            description:
+              "Register for a free account and unlock the power to sell anything, anytime.",
+          },
+          {
+            number: "02",
+            title: "Create Your Auction",
+            description:
+              "Create a compelling listing that showcases your item and attracts potential buyers.",
+          },
+          {
+            number: "03",
+            title: "Add Starting Price for Bid",
+            description:
+              "Determine your starting bid and consider a reserve price for added control.",
+          },
+          {
+            number: "04",
+            title: "List Product for Sale",
+            description:
+              "Publish your Product and watch the bids come in, turning your unused items into revenue.",
+          },
+        ].map((step, index) => (
+          <div className="col" key={index}>
+            <div className="card text-light bg-dark p-4 rounded-3 border-0">
+              <h2 className="display-4 fw-bold text-muted">{step.number}</h2>
+              <h3 className="fs-4 fw-bold">{step.title}</h3>
+              <p className="text-secondary">{step.description}</p>
+            </div>
           </div>
-          <div className="flex flex-col text-white gap-4 justify-start p-8 rounded-2xl bg-theme-bg ">
-            <h2 className="text-5xl font-bold text-stroke">02</h2>
-            <h3 className="text-2xl font-bold">Create Your Auction</h3>
-            <p className="text-body-text-color">
-              Create a compelling listing that showcases your item and attracts
-              potential buyers.
-            </p>
-          </div>
-          <div className="flex flex-col text-white gap-4 justify-start p-8 rounded-2xl bg-theme-bg ">
-            <h2 className="text-5xl font-bold text-stroke">03</h2>
-            <h3 className="text-2xl font-bold">Add Starting Price for Bid</h3>
-            <p className="text-body-text-color">
-              Determine your starting bid and consider a reserve price for added
-              control.
-            </p>
-          </div>
-          <div className="flex flex-col text-white gap-4 justify-start p-8 rounded-2xl bg-theme-bg ">
-            <h2 className="text-5xl font-bold text-stroke">04</h2>
-            <h3 className="text-2xl font-bold">List Product for Sale</h3>
-            <p className="text-body-text-color">
-              Publish your Product and watch the bids come in, turning your unused
-              items into revenue.
-            </p>
-          </div>
-        </div>
+        ))}
       </div>
-    );
-  };
-  
-  export default ProcessHome;
-  
+    </div>
+  );
+};
+
+export default ProcessHome;
