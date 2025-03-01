@@ -1,8 +1,8 @@
-import CreateEarnHome from "../";
-import HeroHome from "../components/home/HeroHome";
-import LiveHome from "../components/home/LiveHome";
-import ProcessHome from "../components/home/ProcessHome";
-import UpcomingHome from "../components/home/UpcomingHome";
+import CreateEarnHome from "../components/home/createearn";
+import HeroHome from "../components/home/herohome";
+import LiveHome from "../components/home/livehome";
+import ProcessHome from "../components/home/mainhome";
+import UpcomingHome from "../components/home/upcomminghome";
 
 import { register } from "swiper/element/bundle";
 // Register Swiper custom elements

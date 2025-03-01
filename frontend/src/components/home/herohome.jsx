@@ -1,19 +1,19 @@
 import { Link } from "react-router-dom";
 import { FaArrowRightLong } from "react-icons/fa6";
-import herovector from "../assets/main.jpg";
+import herovector from "../../assets/main.jpg";
 import { RiFindReplaceLine } from "react-icons/ri";
 
 const HeroHome = () => {
   const logInUser = JSON.parse(localStorage.getItem("user"));
 
   return (
-    <div className="container py-5">
+    <div className="container text-black py-5">
       <div className="row align-items-center">
         {/* Left Section */}
         <div className="col-lg-6 text-white position-relative">
           {/* Background Blur Effects */}
           <div
-            className="position-absolute bg-primary rounded-circle"
+            className="position-absolute rounded-circle"
             style={{
               width: "300px",
               height: "300px",
@@ -43,11 +43,11 @@ const HeroHome = () => {
             }}
           ></div>
 
-          <h3 className="text-uppercase">Discover, Collect and Sell</h3>
-          <h1 className="display-4 fw-bold">
+          <h3 className="text-uppercase text-black">Discover, Collect and Sell</h3>
+          <h1 className="display-4 text-black fw-bold">
             Discover Rare Products And Bid in Real-Time
           </h1>
-          <p className="lead">
+          <p className="lead text-black">
             Our real-time auctions let you join the thrill of selling, hunting,
             and bidding live on rare products. Explore our listings to start
             bidding or sell your own products!
@@ -56,7 +56,7 @@ const HeroHome = () => {
           {/* Buttons */}
           <div className="d-flex gap-3">
             <Link to="/dashboard" className="btn btn-outline-primary px-4 py-2">
-              <RiFindReplaceLine className="me-2" />
+              <RiFindReplaceLine className="me-2 " />
               Explore More
             </Link>
             <Link

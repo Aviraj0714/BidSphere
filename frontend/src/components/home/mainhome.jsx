@@ -3,7 +3,7 @@ import React from "react";
 const ProcessHome = () => {
   return (
     <div className="container my-5">
-      <h2 className="text-center text-light fw-medium mb-4">
+      <h2 className="text-center text-black text-light fw-medium mb-4">
         Create And Sell <span className="text-primary">Your Products</span>
       </h2>
       <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">

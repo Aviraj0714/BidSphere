@@ -1,20 +1,26 @@
-import SingleAuction from "../SingleAuction";
 import { useSelector, useDispatch } from "react-redux";
 import { getLiveAuctions } from "../../store/auction/auctionSlice";
 import { useEffect, useState } from "react";
 
 const LiveHome = ({ onlyAuction }) => {
   const dispatch = useDispatch();
-  const { liveAuctions } = useSelector((state) => state.auction);
+
+  // Ensure liveAuctions is always an array
+  const liveAuctions = useSelector((state) => state.auction.liveAuctions) || [];
+
   const [liveAuctionsData, setLiveAuctionsData] = useState([]);
 
+  // Fetch auctions only once when component mounts
   useEffect(() => {
     dispatch(getLiveAuctions());
   }, [dispatch]);
 
+  // Update state only when liveAuctions changes
   useEffect(() => {
-    setLiveAuctionsData(liveAuctions);
-  }, [liveAuctions]);
+    if (JSON.stringify(liveAuctions) !== JSON.stringify(liveAuctionsData)) {
+      setLiveAuctionsData(liveAuctions);
+    }
+  }, [liveAuctions]); // ✅ This ensures the state only updates if data actually changes
 
   return (
     <div id="livehome">
@@ -25,7 +31,7 @@ const LiveHome = ({ onlyAuction }) => {
               <span className="position-absolute start-0 top-0 translate-middle p-1 bg-primary rounded-circle"></span>
               <span className="position-relative d-inline-block p-1 bg-primary rounded-circle"></span>
             </div>
-            <h2 className="h4 fw-bold text-light">Live Auctions</h2>
+            <h2 className="h4 fw-bold text-black text-light">Live Auctions</h2>
           </>
         )}
       </div>
@@ -59,7 +65,7 @@ const LiveHome = ({ onlyAuction }) => {
           ))}
         </swiper-container>
       ) : (
-        <p className="text-light">No live auctions available.</p>
+        <p className="text-light text-black">No live auctions available.</p>
       )}
     </div>
   );

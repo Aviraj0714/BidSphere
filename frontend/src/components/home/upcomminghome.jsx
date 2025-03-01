@@ -1,24 +1,31 @@
 import { useDispatch, useSelector } from "react-redux";
-import SingleAuction from "../SingleAuction";
+// import SingleAuction from "../SingleAuction";
 import { getUpcomingAuctions } from "../../store/auction/auctionSlice";
 import { useEffect, useState } from "react";
 
 const UpcomingHome = () => {
   const dispatch = useDispatch();
-  const { upComingAuctions = [] } = useSelector((state) => state.auction);
+
+  // Ensure upComingAuctions is always an array
+  const upComingAuctions = useSelector((state) => state.auction.upComingAuctions) || [];
+
   const [upComingAuctionsData, setUpComingAuctionsData] = useState([]);
 
+  // Fetch auctions only once when component mounts
   useEffect(() => {
     dispatch(getUpcomingAuctions());
   }, [dispatch]);
 
+  // Update state only when upComingAuctions changes
   useEffect(() => {
-    setUpComingAuctionsData(upComingAuctions);
-  }, [upComingAuctions]);
+    if (JSON.stringify(upComingAuctions) !== JSON.stringify(upComingAuctionsData)) {
+      setUpComingAuctionsData(upComingAuctions);
+    }
+  }, [upComingAuctions]); // ✅ Ensures unnecessary updates don’t trigger re-renders
 
   return (
     <div className="mb-4">
-      <h2 className="h4 fw-bold text-light mb-3">Upcoming Auctions</h2>
+      <h2 className="h4 fw-bold text-light text-black mb-3">Upcoming Auctions</h2>
 
       {upComingAuctionsData.length > 0 ? (
         <swiper-container
@@ -49,7 +56,7 @@ const UpcomingHome = () => {
           ))}
         </swiper-container>
       ) : (
-        <p className="text-light">No upcoming auctions available.</p>
+        <p className="text-light text-black">No upcoming auctions available.</p>
       )}
     </div>
   );
